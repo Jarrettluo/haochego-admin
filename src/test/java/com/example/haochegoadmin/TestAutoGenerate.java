@@ -15,16 +15,10 @@ public class TestAutoGenerate {
     void contextLoads() {
     }
 
-    @Autowired
-    private UserMapper userMapper;
 
     @Test
     public void testSelect() {
-        System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(null);
-        for(User user:userList) {
-            System.out.println(user);
-        }
+
     }
 
 }

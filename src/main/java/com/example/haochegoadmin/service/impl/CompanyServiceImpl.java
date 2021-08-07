@@ -17,4 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> implements CompanyService {
 
+    @Override
+    public boolean save(Company entity) {
+        return super.save(entity);
+    }
 }

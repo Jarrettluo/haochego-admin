@@ -1,9 +1,12 @@
 package com.example.haochegoadmin.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.example.haochegoadmin.service.PartnerService;
+import com.example.haochegoadmin.service.PreparednessService;
+import com.example.utils.ApiResult;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,5 +19,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/haochegoadmin/preparedness")
 public class PreparednessController {
+
+    @Resource
+    PreparednessService preparednessService;
+
+    @PostMapping
+    public ApiResult add(){
+        return ApiResult.success();
+    }
+
+    @PutMapping
+    public ApiResult update(){
+        return ApiResult.success();
+    }
+
+    @GetMapping
+    public ApiResult find(){
+        return ApiResult.success();
+    }
+
+    @DeleteMapping
+    public ApiResult remove(){
+        return ApiResult.success();
+    }
+
+    @GetMapping("/list/")
+    public ApiResult list(){
+        return ApiResult.success();
+    }
 
 }
