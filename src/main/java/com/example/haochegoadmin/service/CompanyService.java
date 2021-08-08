@@ -15,5 +15,4 @@ import java.util.List;
  * @since 2021-08-04
  */
 public interface CompanyService extends IService<Company> {
-
 }

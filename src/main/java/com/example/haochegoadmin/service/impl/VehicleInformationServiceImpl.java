@@ -6,6 +6,8 @@ import com.example.haochegoadmin.service.VehicleInformationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -16,5 +18,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class VehicleInformationServiceImpl extends ServiceImpl<VehicleInformationMapper, VehicleInformation> implements VehicleInformationService {
-
+    @Override
+    public List<VehicleInformation> queryByCompanyId(Integer companyId) {
+        return null;
+    }
 }

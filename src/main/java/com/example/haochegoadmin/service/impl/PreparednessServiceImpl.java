@@ -6,6 +6,8 @@ import com.example.haochegoadmin.service.PreparednessService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -16,5 +18,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PreparednessServiceImpl extends ServiceImpl<PreparednessMapper, Preparedness> implements PreparednessService {
-
+    @Override
+    public List<Preparedness> queryByCompanyId(Integer companyId) {
+        return null;
+    }
 }

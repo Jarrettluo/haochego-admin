@@ -1,11 +1,13 @@
 package com.example.haochegoadmin.controller;
 
 
+import com.example.haochegoadmin.entity.Partner;
 import com.example.haochegoadmin.service.PartnerService;
 import com.example.utils.ApiResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -44,7 +46,8 @@ public class PartnerController {
 
     @GetMapping("/list/")
     public ApiResult list(){
-        return ApiResult.success();
+        List<Partner> partnerList = partnerService.queryByCompanyId(1);
+        return ApiResult.success(partnerList);
     }
 
 

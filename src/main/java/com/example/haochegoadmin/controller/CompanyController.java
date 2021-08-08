@@ -7,6 +7,7 @@ import com.example.utils.ApiResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -23,23 +24,36 @@ public class CompanyController {
     @Resource
     CompanyService companyService;
 
-    @GetMapping
+    @GetMapping("/list/")
     ApiResult list(){
-        return ApiResult.success();
+        List<Company> companyList = companyService.list();
+        return ApiResult.success(companyList);
     }
 
     @PostMapping
     public ApiResult add(@RequestBody Company company) {
-        return ApiResult.success();
+        boolean saveState = companyService.save(company);
+        return ApiResult.success(saveState);
     }
 
     @PutMapping
     public ApiResult update(@RequestBody Company company) {
-        return ApiResult.success();
+        boolean updateState = companyService.updateById(company);
+        if(updateState){
+            return ApiResult.success(updateState);
+        }else {
+            return ApiResult.error(1202, "更新失败");
+        }
+
     }
 
     @DeleteMapping
     public ApiResult remove(@RequestParam Integer id){
-        return ApiResult.success();
+        boolean removeState = companyService.removeById(id);
+        if(removeState){
+            return ApiResult.success(removeState);
+        }else {
+            return ApiResult.error(1202, "删除失败");
+        }
     }
 }

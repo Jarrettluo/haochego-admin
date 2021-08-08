@@ -6,6 +6,9 @@ import com.example.haochegoadmin.service.CompanyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -20,5 +23,20 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
     @Override
     public boolean save(Company entity) {
         return super.save(entity);
+    }
+
+    @Override
+    public boolean updateById(Company entity) {
+        return super.updateById(entity);
+    }
+
+    @Override
+    public List<Company> list() {
+        return super.list();
+    }
+
+    @Override
+    public boolean removeById(Serializable id) {
+        return super.removeById(id);
     }
 }
