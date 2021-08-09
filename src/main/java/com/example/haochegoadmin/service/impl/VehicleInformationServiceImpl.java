@@ -1,6 +1,7 @@
 package com.example.haochegoadmin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.haochegoadmin.entity.Partner;
 import com.example.haochegoadmin.entity.Preparedness;
 import com.example.haochegoadmin.entity.VehicleInformation;
 import com.example.haochegoadmin.mapper.VehicleInformationMapper;
@@ -21,6 +22,16 @@ import java.util.List;
  */
 @Service
 public class VehicleInformationServiceImpl extends ServiceImpl<VehicleInformationMapper, VehicleInformation> implements VehicleInformationService {
+
+    @Override
+    public ApiResult add(VehicleInformation vehicleInformation) {
+        boolean addState = super.save(vehicleInformation);
+        if(addState){
+            return ApiResult.success("保存成功！");
+        }else {
+            return ApiResult.error(1202, "保存失败！");
+        }
+    }
 
     @Override
     public ApiResult getAll() {

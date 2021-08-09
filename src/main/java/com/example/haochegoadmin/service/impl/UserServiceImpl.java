@@ -1,6 +1,7 @@
 package com.example.haochegoadmin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.haochegoadmin.entity.Partner;
 import com.example.haochegoadmin.entity.Preparedness;
 import com.example.haochegoadmin.entity.User;
 import com.example.haochegoadmin.mapper.UserMapper;
@@ -21,6 +22,16 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    @Override
+    public ApiResult add(User user) {
+        boolean addState = super.save(user);
+        if(addState){
+            return ApiResult.success("保存成功！");
+        }else {
+            return ApiResult.error(1202, "保存失败！");
+        }
+    }
 
     @Override
     public ApiResult getAll() {
@@ -59,8 +70,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public ApiResult put() {
-        User user = new User();
+    public ApiResult put(User user) {
         boolean updateState = super.saveOrUpdate(user);
         if(updateState){
             return ApiResult.success("true");

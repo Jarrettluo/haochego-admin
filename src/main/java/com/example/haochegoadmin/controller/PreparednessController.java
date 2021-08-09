@@ -46,7 +46,7 @@ public class PreparednessController {
 
     @GetMapping("/queryListbyVehicleId/")
     public ApiResult listbyVehicleId(@RequestParam Integer vehicleId){
-        return ApiResult.success();
+        return preparednessService.getAllByVehicleId(vehicleId);
     }
 
 }

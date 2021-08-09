@@ -17,6 +17,7 @@ import java.util.List;
  */
 public interface PartnerService extends IService<Partner> {
 
+    ApiResult add(Partner partner);
     ApiResult getAll();
     ApiResult getAllbyVehicleId(Integer vehicleId);
     ApiResult delete(Integer id);

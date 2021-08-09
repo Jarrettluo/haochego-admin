@@ -26,12 +26,12 @@ public class UserController {
 
     @PostMapping
     public ApiResult add(@RequestBody User user){
-        return ApiResult.success();
+        return userService.add(user);
     }
 
     @PutMapping
     public ApiResult update(@RequestBody User user){
-        return ApiResult.success();
+        return userService.put(user);
     }
 
     @GetMapping
@@ -41,12 +41,12 @@ public class UserController {
 
     @DeleteMapping
     public ApiResult remove(@RequestParam Integer id){
-        return ApiResult.success();
+        return userService.delete(id);
     }
 
     @GetMapping("/list/")
     public ApiResult list(@RequestParam Integer companyId){
-        return ApiResult.success();
+        return userService.getAllbyCompanyId(companyId);
     }
 
 }

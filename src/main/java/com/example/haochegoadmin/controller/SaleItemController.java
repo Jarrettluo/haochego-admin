@@ -26,12 +26,12 @@ public class SaleItemController {
 
     @PostMapping
     public ApiResult add(@RequestBody SaleItem saleItem){
-        return ApiResult.success();
+        return saleItemService.add(saleItem);
     }
 
     @PutMapping
     public ApiResult update(@RequestBody SaleItem saleItem){
-        return ApiResult.success();
+        return saleItemService.put(saleItem);
     }
 
     @GetMapping
@@ -41,12 +41,12 @@ public class SaleItemController {
 
     @DeleteMapping
     public ApiResult remove(@RequestParam Integer id){
-        return ApiResult.success();
+        return saleItemService.delete(id);
     }
 
     @GetMapping("/list/")
     public ApiResult list(@RequestParam Integer vehicleId){
-        return ApiResult.success();
+        return saleItemService.getOnebyVehicleId(vehicleId);
     }
 
 }

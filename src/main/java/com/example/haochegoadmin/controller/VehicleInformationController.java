@@ -26,12 +26,12 @@ public class VehicleInformationController {
 
     @PostMapping
     public ApiResult add(@RequestBody VehicleInformation vehicleInformation){
-        return ApiResult.success();
+        return vehicleInformationService.add(vehicleInformation);
     }
 
     @PutMapping
     public ApiResult update(@RequestBody VehicleInformation vehicleInformation){
-        return ApiResult.success();
+        return vehicleInformationService.put(vehicleInformation);
     }
 
     @GetMapping
@@ -41,12 +41,12 @@ public class VehicleInformationController {
 
     @DeleteMapping
     public ApiResult remove(@RequestParam Integer id){
-        return ApiResult.success();
+        return vehicleInformationService.delete(id);
     }
 
     @GetMapping("/list/")
     public ApiResult list(@RequestParam Integer companyId){
-        return ApiResult.success();
+        return vehicleInformationService.deletebyCompanyId(companyId);
     }
 
 }

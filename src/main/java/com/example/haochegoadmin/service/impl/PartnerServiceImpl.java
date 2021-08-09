@@ -27,6 +27,16 @@ import java.util.List;
 public class PartnerServiceImpl extends ServiceImpl<PartnerMapper, Partner> implements PartnerService {
 
     @Override
+    public ApiResult add(Partner partner) {
+        boolean addState = super.save(partner);
+        if(addState){
+            return ApiResult.success("保存成功！");
+        }else {
+            return ApiResult.error(1202, "保存失败！");
+        }
+    }
+
+    @Override
     public ApiResult getAll() {
         List<Partner> partnerList = super.list();
         return ApiResult.success(partnerList);

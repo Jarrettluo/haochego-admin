@@ -1,6 +1,7 @@
 package com.example.haochegoadmin.service;
 
 import com.example.haochegoadmin.entity.OperationLog;
+import com.example.haochegoadmin.entity.Partner;
 import com.example.haochegoadmin.entity.VehicleInformation;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.utils.ApiResult;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 public interface VehicleInformationService extends IService<VehicleInformation> {
 
+    ApiResult add(VehicleInformation vehicleInformation);
     ApiResult getAll();
     ApiResult getSaledbyCompanyId(Integer companyId);
     ApiResult getUnsaledbyCompanyId(Integer companyId);
