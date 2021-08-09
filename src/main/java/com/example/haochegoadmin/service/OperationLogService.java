@@ -1,7 +1,9 @@
 package com.example.haochegoadmin.service;
 
+import com.example.haochegoadmin.entity.Company;
 import com.example.haochegoadmin.entity.OperationLog;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.utils.ApiResult;
 
 import java.util.List;
 
@@ -15,6 +17,9 @@ import java.util.List;
  */
 public interface OperationLogService extends IService<OperationLog> {
 
-    List<OperationLog> queryByCompanyId(Integer companyId);
+    ApiResult getAll();
+    ApiResult delete(Integer id);
+    ApiResult getOne();
+    ApiResult put();
 
 }

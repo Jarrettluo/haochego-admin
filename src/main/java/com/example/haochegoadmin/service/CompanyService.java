@@ -15,4 +15,11 @@ import java.util.List;
  * @since 2021-08-04
  */
 public interface CompanyService extends IService<Company> {
+
+    ApiResult post(Company company);
+    ApiResult getAll();
+    ApiResult delete(Integer id);
+    ApiResult getOne();
+    ApiResult put(Company company);
+
 }

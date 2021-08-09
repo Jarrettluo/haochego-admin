@@ -1,6 +1,7 @@
 package com.example.haochegoadmin.controller;
 
 
+import com.example.haochegoadmin.entity.Preparedness;
 import com.example.haochegoadmin.service.PartnerService;
 import com.example.haochegoadmin.service.PreparednessService;
 import com.example.utils.ApiResult;
@@ -24,12 +25,12 @@ public class PreparednessController {
     PreparednessService preparednessService;
 
     @PostMapping
-    public ApiResult add(){
+    public ApiResult add(@RequestBody Preparedness preparedness){
         return ApiResult.success();
     }
 
     @PutMapping
-    public ApiResult update(){
+    public ApiResult update(@RequestBody Preparedness preparedness){
         return ApiResult.success();
     }
 
@@ -39,12 +40,12 @@ public class PreparednessController {
     }
 
     @DeleteMapping
-    public ApiResult remove(){
+    public ApiResult remove(@RequestParam Integer id){
         return ApiResult.success();
     }
 
     @GetMapping("/list/")
-    public ApiResult list(){
+    public ApiResult list(@RequestParam Integer vehicleId){
         return ApiResult.success();
     }
 

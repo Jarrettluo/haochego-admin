@@ -4,6 +4,7 @@ import com.example.haochegoadmin.entity.OperationLog;
 import com.example.haochegoadmin.mapper.OperationLogMapper;
 import com.example.haochegoadmin.service.OperationLogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.utils.ApiResult;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -21,10 +22,6 @@ import java.util.List;
 @Service
 public class OperationLogServiceImpl extends ServiceImpl<OperationLogMapper, OperationLog> implements OperationLogService {
 
-    @Override
-    public List<OperationLog> queryByCompanyId(Integer companyId) {
-        return null;
-    }
 
     @Override
     public boolean save(OperationLog entity) {
@@ -44,5 +41,25 @@ public class OperationLogServiceImpl extends ServiceImpl<OperationLogMapper, Ope
     @Override
     public boolean updateById(OperationLog entity) {
         return super.updateById(entity);
+    }
+
+    @Override
+    public ApiResult getAll() {
+        return null;
+    }
+
+    @Override
+    public ApiResult delete(Integer id) {
+        return null;
+    }
+
+    @Override
+    public ApiResult getOne() {
+        return null;
+    }
+
+    @Override
+    public ApiResult put() {
+        return null;
     }
 }

@@ -25,12 +25,12 @@ public class PartnerController {
     PartnerService partnerService;
 
     @PostMapping
-    public ApiResult add(){
+    public ApiResult add(@RequestBody Partner partner){
         return ApiResult.success();
     }
 
     @PutMapping
-    public ApiResult update(){
+    public ApiResult update(@RequestBody Partner partner){
         return ApiResult.success();
     }
 
@@ -40,13 +40,13 @@ public class PartnerController {
     }
 
     @DeleteMapping
-    public ApiResult remove(){
+    public ApiResult remove(@RequestParam Integer vehicleId){
         return ApiResult.success();
     }
 
     @GetMapping("/list/")
-    public ApiResult list(){
-        List<Partner> partnerList = partnerService.queryByCompanyId(1);
+    public ApiResult list(@RequestParam Integer vehicleId){
+        List<Partner> partnerList = partnerService.queryByCompanyId(vehicleId);
         return ApiResult.success(partnerList);
     }
 

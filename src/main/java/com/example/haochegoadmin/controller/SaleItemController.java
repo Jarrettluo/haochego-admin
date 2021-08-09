@@ -1,6 +1,7 @@
 package com.example.haochegoadmin.controller;
 
 
+import com.example.haochegoadmin.entity.SaleItem;
 import com.example.haochegoadmin.service.PartnerService;
 import com.example.haochegoadmin.service.SaleItemService;
 import com.example.utils.ApiResult;
@@ -24,12 +25,12 @@ public class SaleItemController {
     SaleItemService saleItemService;
 
     @PostMapping
-    public ApiResult add(){
+    public ApiResult add(@RequestBody SaleItem saleItem){
         return ApiResult.success();
     }
 
     @PutMapping
-    public ApiResult update(){
+    public ApiResult update(@RequestBody SaleItem saleItem){
         return ApiResult.success();
     }
 
@@ -39,12 +40,12 @@ public class SaleItemController {
     }
 
     @DeleteMapping
-    public ApiResult remove(){
+    public ApiResult remove(@RequestParam Integer id){
         return ApiResult.success();
     }
 
     @GetMapping("/list/")
-    public ApiResult list(){
+    public ApiResult list(@RequestParam Integer vehicleId){
         return ApiResult.success();
     }
 
