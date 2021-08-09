@@ -1,13 +1,8 @@
 package com.example.haochegoadmin.service.impl;
 
-import com.example.haochegoadmin.entity.Company;
-import com.example.haochegoadmin.entity.Partner;
-import com.example.haochegoadmin.entity.Preparedness;
-import com.example.haochegoadmin.entity.SaleItem;
-import com.example.haochegoadmin.mapper.CompanyMapper;
-import com.example.haochegoadmin.mapper.PartnerMapper;
-import com.example.haochegoadmin.mapper.UserMapper;
-import com.example.haochegoadmin.mapper.VehicleInformationMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.haochegoadmin.entity.*;
+import com.example.haochegoadmin.mapper.*;
 import com.example.haochegoadmin.service.CompanyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.utils.ApiResult;
@@ -35,17 +30,22 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
     PartnerMapper partnerMapper;
 
     @Autowired
-    Preparedness preparedness;
+    PreparednessMapper preparednessMapper;
 
     @Autowired
-    SaleItem saleItem;
+    SaleItemMapper saleItemMapper;
 
     @Autowired
     VehicleInformationMapper vehicleInformationMapper;
 
     @Override
     public ApiResult post(Company company) {
-        return null;
+        boolean addState = super.save(company);
+        if(addState){
+            return ApiResult.success("success");
+        }else {
+            return ApiResult.error(1202, "删除失败！");
+        }
     }
 
     @Override
@@ -55,8 +55,16 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
 
     @Override
     public ApiResult delete(Integer id) {
-
-        return null;
+        userMapper.delete(new QueryWrapper<User>().eq("vehicle_id", id));
+        saleItemMapper.delete(new QueryWrapper<SaleItem>().eq("vehicle_id", id));
+        vehicleInformationMapper.delete(new QueryWrapper<VehicleInformation>().eq("vehicle_id", id));
+        // TODO 删除vehicle关联的子表
+        boolean removeState = super.removeById(id);
+        if(removeState){
+            return ApiResult.success("success");
+        }else {
+            return ApiResult.error(1202, "删除失败");
+        }
     }
 
     @Override
@@ -66,6 +74,11 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
 
     @Override
     public ApiResult put(Company company) {
-        return null;
+        boolean updateState = super.updateById(company);
+        if(updateState){
+            return ApiResult.success("success");
+        }else {
+            return ApiResult.error(1202, "更新失败！");
+        }
     }
 }
