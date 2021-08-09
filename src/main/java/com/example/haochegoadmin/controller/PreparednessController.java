@@ -31,7 +31,7 @@ public class PreparednessController {
 
     @PutMapping
     public ApiResult update(@RequestBody Preparedness preparedness){
-        return ApiResult.success();
+        return preparednessService.put();
     }
 
     @GetMapping
@@ -40,12 +40,12 @@ public class PreparednessController {
     }
 
     @DeleteMapping
-    public ApiResult remove(@RequestParam Integer id){
+    public ApiResult removebyVehicleId(@RequestParam Integer id){
         return ApiResult.success();
     }
 
-    @GetMapping("/list/")
-    public ApiResult list(@RequestParam Integer vehicleId){
+    @GetMapping("/queryListbyVehicleId/")
+    public ApiResult listbyVehicleId(@RequestParam Integer vehicleId){
         return ApiResult.success();
     }
 

@@ -18,9 +18,9 @@ import java.util.List;
 public interface PreparednessService extends IService<Preparedness> {
 
     ApiResult getAll();
-    ApiResult getAllbyVehicleId(Integer vehicleId);
+    ApiResult getAllByVehicleId(Integer vehicleId);
     ApiResult delete(Integer id);
-    ApiResult deletebyVehicleId(Integer vehicleId);
+    ApiResult deleteByVehicleId(Integer vehicleId);
     ApiResult getOne();
     ApiResult put();
 

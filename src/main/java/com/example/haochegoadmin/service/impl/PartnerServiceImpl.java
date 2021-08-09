@@ -1,5 +1,6 @@
 package com.example.haochegoadmin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.haochegoadmin.entity.Partner;
 import com.example.haochegoadmin.mapper.PartnerMapper;
@@ -25,41 +26,51 @@ import java.util.List;
 @Service
 public class PartnerServiceImpl extends ServiceImpl<PartnerMapper, Partner> implements PartnerService {
 
-
-    public List<Partner> queryByCompanyId(Integer companyId) {
-        QueryWrapper<Partner> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("vehicle_id", 107);
-        List<Partner> partnerList= super.list(queryWrapper);
-        return partnerList;
-    }
-
     @Override
     public ApiResult getAll() {
-        return null;
+        List<Partner> partnerList = super.list();
+        return ApiResult.success(partnerList);
     }
 
     @Override
     public ApiResult getAllbyVehicleId(Integer vehicleId) {
-        return null;
+        List<Partner> partnerList = super.list(new QueryWrapper<Partner>().eq("vehicle_id", vehicleId));
+        return ApiResult.success(partnerList);
     }
 
     @Override
     public ApiResult delete(Integer id) {
-        return null;
+        boolean deleteState = super.removeById(id);
+        if(deleteState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "删除失败！");
+        }
     }
 
     @Override
     public ApiResult deletebyVehicleId(Integer vehicleId) {
-        return null;
+        boolean deleteState = super.remove(new QueryWrapper<Partner>().eq("vehicle_id", vehicleId));
+        if(deleteState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "删除失败！");
+        }
     }
 
     @Override
     public ApiResult getOne() {
-        return null;
+        Partner partner = super.getById(1);
+        return ApiResult.success(partner);
     }
 
     @Override
     public ApiResult put(Partner partner) {
-        return null;
+        boolean updateState = super.saveOrUpdate(partner);
+        if(updateState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "删除失败！");
+        }
     }
 }

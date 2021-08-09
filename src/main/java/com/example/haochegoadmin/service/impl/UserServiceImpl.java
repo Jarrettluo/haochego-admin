@@ -1,5 +1,7 @@
 package com.example.haochegoadmin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.haochegoadmin.entity.Preparedness;
 import com.example.haochegoadmin.entity.User;
 import com.example.haochegoadmin.mapper.UserMapper;
 import com.example.haochegoadmin.service.UserService;
@@ -20,28 +22,35 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    public List<User> queryByCompanyId(Integer companyId) {
-        return null;
-    }
-
     @Override
     public ApiResult getAll() {
-        return null;
+        return ApiResult.success(super.list());
     }
 
     @Override
     public ApiResult getAllbyCompanyId(Integer companyId) {
-        return null;
+        List<User> userList = super.list(new QueryWrapper<User>().eq("company_id", companyId));
+        return ApiResult.success(userList);
     }
 
     @Override
     public ApiResult delete(Integer id) {
-        return null;
+        boolean removeState = super.removeById(id);
+        if(removeState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "删除失败");
+        }
     }
 
     @Override
     public ApiResult deletebyCompanyId(Integer companyId) {
-        return null;
+        boolean removeState = super.removeById(new QueryWrapper<Preparedness>().eq("company_id", companyId));
+        if(removeState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "删除失败");
+        }
     }
 
     @Override
@@ -51,6 +60,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public ApiResult put() {
-        return null;
+        User user = new User();
+        boolean updateState = super.saveOrUpdate(user);
+        if(updateState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "保存失败");
+        }
     }
 }

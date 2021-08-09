@@ -1,5 +1,6 @@
 package com.example.haochegoadmin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.haochegoadmin.entity.Preparedness;
 import com.example.haochegoadmin.mapper.PreparednessMapper;
 import com.example.haochegoadmin.service.PreparednessService;
@@ -20,28 +21,36 @@ import java.util.List;
 @Service
 public class PreparednessServiceImpl extends ServiceImpl<PreparednessMapper, Preparedness> implements PreparednessService {
 
-    public List<Preparedness> queryByCompanyId(Integer companyId) {
-        return null;
-    }
 
     @Override
     public ApiResult getAll() {
-        return null;
+        return ApiResult.success(super.list());
     }
 
     @Override
-    public ApiResult getAllbyVehicleId(Integer vehicleId) {
-        return null;
+    public ApiResult getAllByVehicleId(Integer vehicleId) {
+        List<Preparedness> preparednessList = super.list(new QueryWrapper<Preparedness>().eq("vehicle_id", vehicleId));
+        return ApiResult.success(preparednessList);
     }
 
     @Override
     public ApiResult delete(Integer id) {
-        return null;
+        boolean removeState = super.removeById(id);
+        if(removeState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "删除失败");
+        }
     }
 
     @Override
-    public ApiResult deletebyVehicleId(Integer vehicleId) {
-        return null;
+    public ApiResult deleteByVehicleId(Integer vehicleId) {
+        boolean removeState = super.removeById(new QueryWrapper<Preparedness>().eq("vehicle_id", vehicleId));
+        if(removeState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "删除失败");
+        }
     }
 
     @Override
@@ -51,6 +60,12 @@ public class PreparednessServiceImpl extends ServiceImpl<PreparednessMapper, Pre
 
     @Override
     public ApiResult put() {
-        return null;
+        Preparedness preparedness = new Preparedness();
+        boolean updateState = super.saveOrUpdate(preparedness);
+        if(updateState){
+            return ApiResult.success("true");
+        }else {
+            return ApiResult.error(1202, "保存失败");
+        }
     }
 }

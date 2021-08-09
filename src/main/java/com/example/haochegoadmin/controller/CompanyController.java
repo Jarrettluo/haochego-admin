@@ -26,34 +26,21 @@ public class CompanyController {
 
     @GetMapping("/list/")
     ApiResult list(){
-        List<Company> companyList = companyService.list();
-        return ApiResult.success(companyList);
+        return companyService.getAll();
     }
 
     @PostMapping
     public ApiResult add(@RequestBody Company company) {
-        boolean saveState = companyService.save(company);
-        return ApiResult.success(saveState);
+        return companyService.post(company);
     }
 
     @PutMapping
     public ApiResult update(@RequestBody Company company) {
-        boolean updateState = companyService.updateById(company);
-        if(updateState){
-            return ApiResult.success(updateState);
-        }else {
-            return ApiResult.error(1202, "更新失败");
-        }
-
+        return companyService.put(company);
     }
 
     @DeleteMapping
     public ApiResult remove(@RequestParam Integer id){
-        boolean removeState = companyService.removeById(id);
-        if(removeState){
-            return ApiResult.success(removeState);
-        }else {
-            return ApiResult.error(1202, "删除失败");
-        }
+        return companyService.delete(id);
     }
 }
