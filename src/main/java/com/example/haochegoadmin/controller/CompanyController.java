@@ -24,21 +24,25 @@ public class CompanyController {
     @Resource
     CompanyService companyService;
 
+    @CrossOrigin
     @GetMapping("/list/")
     ApiResult list(){
         return companyService.getAll();
     }
 
+    @CrossOrigin
     @PostMapping
     public ApiResult add(@RequestBody Company company) {
         return companyService.post(company);
     }
 
+    @CrossOrigin
     @PutMapping
     public ApiResult update(@RequestBody Company company) {
         return companyService.put(company);
     }
 
+    @CrossOrigin
     @DeleteMapping
     public ApiResult remove(@RequestParam Integer id){
         return companyService.delete(id);
